@@ -67,6 +67,7 @@ echo "Initializing repository with remote ${REMOTE}"
 git init || exit 1
 git config --local user.email "${GITHUB_ACTOR}@users.noreply.github.com" || exit 1
 git config --local user.name  "${GITHUB_ACTOR}" || exit 1
+git config --global --add safe.directory ${WORK_DIR}
 git remote add origin "${REMOTE}" || exit 1
 
 # Fetch initial (current contents).
