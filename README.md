@@ -50,14 +50,12 @@ Usage Example
 ```yaml
 jobs:
   publish:
-    - uses: actions/checkout@master
-    - run: |
-        sh scripts/build-doxygen-html.sh --out static/html
-    - uses: seanmiddleditch/gha-publish-to-git@master
+    - uses: SpinyOwl/publish-artifact-to-git@1.0.1
       with:
-        branch: gh-pages
+        branch: releases
         github_token: '${{ secrets.GITHUB_TOKEN  }}'
         github_pat: '${{ secrets.GH_PAT }}'
-        source_folder: static/html
+        source_folder: build/publish
+        no_delete: true
       if: success() && github.event == 'push'
 ```
